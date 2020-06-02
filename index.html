@@ -30,10 +30,69 @@
     </head>
     <body>
         <div class="center">
-            <p id="text">Fast Read v1.0.8</p>
+            <p id="text">Fast Read v1.0.9</p>
             <p>Here is another text to test PWA update</p>
             <p>And another ...</p>
             <p>And another ...</p>
+            <div>
+                <p>Paste from clipboard</p>
+                <button id="paste">Paste</button>
+                <p id="content"></p>
+            </div>
         </div>
     </body>
+    <script>
+        console.log('azazaz');
+        // navigator.permissions.query({
+        //     name: 'clipboard-read'
+        //     }).then(permissionStatus => {
+        //     // Will be 'granted', 'denied' or 'prompt':
+        //     console.log(permissionStatus.state);
+
+        //     // Listen for changes to the permission state
+        //     permissionStatus.onchange = () => {
+        //         console.log(permissionStatus.state);
+        //     };
+        // }).catch(err => {
+        //     console.log(err);
+        //     console.log(permissionStatus.state);
+        // });
+        function handlePermission() {
+        navigator.permissions.query({name:'clipboard-read'}).then(function(result) {
+            if (result.state == 'granted') {
+            report(result.state);
+            // geoBtn.style.display = 'none';
+            } else if (result.state == 'prompt') {
+            report(result.state);
+            // geoBtn.style.display = 'none';
+            // navigator.geolocation.getCurrentPosition(revealPosition,positionDenied,geoSettings);
+            } else if (result.state == 'denied') {
+            report(result.state);
+            // geoBtn.style.display = 'inline';
+            }
+            result.onchange = function() {
+            report(result.state);
+            }
+        });
+        }
+
+        function report(state) {
+        console.log('Permission ' + state);
+        }
+
+        handlePermission();
+
+        function clipboardPaste() {
+            // document.execCommand("paste")
+            navigator.clipboard.readText()
+                .then(text => {
+                    console.log('Pasted content: ', text);
+                    document.getElementById("content").innerHTML = text;
+                })
+                .catch(err => {
+                    console.error('Failed to read clipboard contents: ', err);
+                });
+        }
+        document.querySelector("#paste").addEventListener("click", clipboardPaste);
+    </script>
 </html>

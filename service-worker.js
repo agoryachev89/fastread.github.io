@@ -44,21 +44,6 @@ self.addEventListener('fetch', function(event) {
     );
 });  
 
-// self.addEventListener('fetch', function(event) {
-//   console.log('Fetching:', event.request.url);  
-//   event.respondWith(async function() {
-//     const cachedResponse = await caches.match(event.request);
-//     if (cachedResponse) {
-//       console.log("\tCached version found: " + event.request.url);
-//       return cachedResponse;
-//     } else {        
-//       console.log("\tGetting from the Internet:" + event.request.url);
-//       return await fetchAndCache(event.request);
-//     }
-//   }());
-
-// });
-
 function fetchAndCache(request) {
 
   return fetch(request)
