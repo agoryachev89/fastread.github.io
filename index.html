@@ -1,9 +1,15 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
     <head>
         <title>Fast Read</title>
         <!-- <script src="hh.js"></script> -->
         <!-- <link rel="stylesheet" href="hh.css" /> -->
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Fast Read - PWA example">
+        <meta name="theme-color" content="#FFA500"/>
         <link rel="manifest" href="manifest.json">
+        <link rel="apple-touch-icon" href="logo2.png">
         <script type="text/javascript">
             if ('serviceWorker' in navigator) {
                 navigator.serviceWorker.register('service-worker.js')
@@ -15,6 +21,12 @@
                 });
             }
         </script>
+        <style>
+            p {
+             font-family: Verdana, Arial, Helvetica, sans-serif; 
+             font-size: 14pt;
+            }
+           </style>
     </head>
     <body>
         <div class="center">
