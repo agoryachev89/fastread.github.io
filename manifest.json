@@ -1,0 +1,21 @@
+{
+    "short_name": "Fast Read",
+    "name": "Fast Read - PWA example",
+    "icons": [
+      {
+        "src": "logo2.png",
+        "type": "image/png",
+        "sizes": "192x192"
+      },
+      {
+        "src": "logo3.png",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+    ],
+    "start_url": "index.html",
+    "background_color": "#FFA500",
+    "display": "standalone",
+    "scope": "/fastread.github.io/",
+    "theme_color": "#FFA500"
+  }
