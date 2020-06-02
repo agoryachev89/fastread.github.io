@@ -35,27 +35,14 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', function(event) {
+    console.log('Fetching:', event.request.url);  
     event.respondWith(
-      caches.open('mysite-dynamic').then(function(cache) {
-        return cache.match(event.request).then(function (response) {
-          return response || fetch(event.request).then(function(response) {
-            cache.put(event.request, response.clone());
-            return response;
-          });
-        });
-      })
+        fetch(event.request).catch(function() {
+            console.log("\tNo internet. Cached version sended: " + event.request.url);
+            return caches.match(event.request);
+        })
     );
-  });
-
-// self.addEventListener('fetch', function(event) {
-//     console.log('Fetching:', event.request.url);  
-//     event.respondWith(
-//         fetch(event.request).catch(function() {
-//             console.log("\tNo internet. Cached version sended: " + event.request.url);
-//             return caches.match(event.request);
-//         })
-//     );
-// });  
+});  
 
 // self.addEventListener('fetch', function(event) {
 //   console.log('Fetching:', event.request.url);  
