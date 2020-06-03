@@ -3,96 +3,25 @@
     <head>
         <title>Fast Read</title>
         <!-- <script src="hh.js"></script> -->
-        <!-- <link rel="stylesheet" href="hh.css" /> -->
+        <link rel="stylesheet" href="style.css" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="Fast Read - PWA example">
         <meta name="theme-color" content="#FFA500"/>
         <link rel="manifest" href="manifest.json">
         <link rel="apple-touch-icon" href="logo2.png">
-        <script type="text/javascript">
-            if ('serviceWorker' in navigator) {
-                navigator.serviceWorker.register('service-worker.js')
-                .then(function(registration) {
-                    console.log('Registration successful, scope is:', registration.scope);
-                })
-                .catch(function(error) {
-                    console.log('Service worker registration failed, error:', error);
-                });
-            }
-        </script>
-        <style>
-            p {
-             font-family: Verdana, Arial, Helvetica, sans-serif; 
-             font-size: 14pt;
-            }
-           </style>
+        <script type="text/javascript" src="scripts_before.js"></script>
     </head>
     <body>
         <div class="center">
-            <p id="text">Fast Read v1.0.9</p>
-            <p>Here is another text to test PWA update</p>
-            <p>And another ...</p>
-            <p>And another ...</p>
+            <p id="text">Fast Read v1.0.10</p>
             <div>
                 <p>Paste from clipboard</p>
+                <textarea id="output"></textarea>
                 <button id="paste">Paste</button>
                 <p id="content"></p>
             </div>
         </div>
     </body>
-    <script>
-        console.log('azazaz');
-        // navigator.permissions.query({
-        //     name: 'clipboard-read'
-        //     }).then(permissionStatus => {
-        //     // Will be 'granted', 'denied' or 'prompt':
-        //     console.log(permissionStatus.state);
-
-        //     // Listen for changes to the permission state
-        //     permissionStatus.onchange = () => {
-        //         console.log(permissionStatus.state);
-        //     };
-        // }).catch(err => {
-        //     console.log(err);
-        //     console.log(permissionStatus.state);
-        // });
-        function handlePermission() {
-        navigator.permissions.query({name:'clipboard-read'}).then(function(result) {
-            if (result.state == 'granted') {
-            report(result.state);
-            // geoBtn.style.display = 'none';
-            } else if (result.state == 'prompt') {
-            report(result.state);
-            // geoBtn.style.display = 'none';
-            // navigator.geolocation.getCurrentPosition(revealPosition,positionDenied,geoSettings);
-            } else if (result.state == 'denied') {
-            report(result.state);
-            // geoBtn.style.display = 'inline';
-            }
-            result.onchange = function() {
-            report(result.state);
-            }
-        });
-        }
-
-        function report(state) {
-        console.log('Permission ' + state);
-        }
-
-        handlePermission();
-
-        function clipboardPaste() {
-            // document.execCommand("paste")
-            navigator.clipboard.readText()
-                .then(text => {
-                    console.log('Pasted content: ', text);
-                    document.getElementById("content").innerHTML = text;
-                })
-                .catch(err => {
-                    console.error('Failed to read clipboard contents: ', err);
-                });
-        }
-        document.querySelector("#paste").addEventListener("click", clipboardPaste);
-    </script>
+    <script type="text/javascript" src="scripts_after.js"></script>
 </html>
