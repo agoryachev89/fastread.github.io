@@ -16,10 +16,18 @@
         <div class="center">
             <p id="text">Fast Read v1.0.10</p>
             <div>
-                <p>Paste from clipboard</p>
-                <textarea id="output"></textarea>
-                <button id="paste">Paste</button>
-                <p id="content"></p>
+                <button onclick="changeWPS(-50)">-</button>
+                <span>WPS: </span>
+                <span id="wps"></span>
+                <button onclick="changeWPS(50)">+</button>
+                <span>&nbsp;</span>
+                <button id="paste">Paste from clipboard</button>
+            </div>
+            <div>
+                <br>
+                <textarea id="output" hidden></textarea>
+                <p id="word"></p>
+                <p id="content" hidden></p>
             </div>
         </div>
     </body>

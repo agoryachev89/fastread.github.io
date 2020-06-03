@@ -1,3 +1,7 @@
+.center {
+    text-align: center;
+}
+
 p {
     font-family: Verdana, Arial, Helvetica, sans-serif; 
     font-size: 14pt;
